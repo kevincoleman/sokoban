@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-// import axios from 'axios';
+import axios from 'axios';
 
 class App extends React.Component<{}, {}> {
   state = {
@@ -9,14 +9,15 @@ class App extends React.Component<{}, {}> {
   };
 
   componentDidMount() {
-    // axios.get(`http://localhost:3000/user`)
-    //   .then(res => {
-    //     this.setState(previousState => ({ users: res.data }));
-    //   });
-    // axios.get(`http://localhost:3000/user/1`)
-    //   .then(res => {
-    //     this.setState(previousState => ({ user: res.data }));
-    //   });
+    let url = `http://api.groupies.kevincoleman.io`;
+    axios.get(url + `/user`)
+      .then(res => {
+        this.setState(previousState => ({ users: res.data }));
+      });
+    axios.get(url + `/user/1`)
+      .then(res => {
+        this.setState(previousState => ({ user: res.data }));
+      });
   }
 
   render() {
@@ -24,8 +25,8 @@ class App extends React.Component<{}, {}> {
     return (
       <div>
         <div id="app-header">
-        <img src="/accountability-logo.png" id="header-logo" />
-        <h1>Accountability</h1>
+        <img src="/groupies-logo.png" id="header-logo" />
+        <h1>Groupies</h1>
         <div />
         </div>
         <div id="app-content">
