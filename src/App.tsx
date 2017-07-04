@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import axios from 'axios';
+// import axios from 'axios';
 
 class App extends React.Component<{}, {}> {
   state = {
@@ -9,14 +9,14 @@ class App extends React.Component<{}, {}> {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/user`)
-      .then(res => {
-        this.setState(previousState => ({ users: res.data }));
-      });
-    axios.get(`http://localhost:3000/user/1`)
-      .then(res => {
-        this.setState(previousState => ({ user: res.data }));
-      });
+    // axios.get(`http://localhost:3000/user`)
+    //   .then(res => {
+    //     this.setState(previousState => ({ users: res.data }));
+    //   });
+    // axios.get(`http://localhost:3000/user/1`)
+    //   .then(res => {
+    //     this.setState(previousState => ({ user: res.data }));
+    //   });
   }
 
   render() {
@@ -24,17 +24,19 @@ class App extends React.Component<{}, {}> {
     return (
       <div>
         <div id="app-header">
-          Accountability
+        <img src="/accountability-logo.png" id="header-logo" />
+        <h1>Accountability</h1>
+        <div />
         </div>
         <div id="app-content">
           {/* <p>All users: {JSON.stringify(this.state.users)}</p>
           <p>One user: {JSON.stringify(this.state.user)}</p> */}
-          <h3>Group Name<button>Finish it!</button></h3>
-          <div className="table">
-            <div>Name1</div>
-            <div>Name2</div>
-            <div>Name3</div>
-            <div className="add">+ Add Groupie</div>
+          <h3 className="restrained">Workout Group<button>Finish it!</button></h3>
+          <div className="table restrained">
+            <div>Brad</div>
+            <div>Janet</div>
+            <div>Tim</div>
+            <div className="add">+ Add a Groupie</div>
           </div>
         </div>
         <div id="app-footer">
