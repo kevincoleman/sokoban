@@ -1,22 +1,16 @@
 {
-  "name": "groupies-web-app",
+  "name": "sokoban",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/jest": "^20.0.2",
-    "@types/node": "^8.0.7",
-    "@types/react": "^15.0.34",
-    "@types/react-dom": "^15.5.1",
-    "axios": "^0.16.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts-ts": "2.3.2"
+    "react-scripts": "1.0.13"
   },
-  "devDependencies": {},
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
