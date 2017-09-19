@@ -10,10 +10,22 @@ class App extends Component {
       width: 4,
       height: 4,
       index: [
-        "brick", "brick", "brick", "brick",
-        "brick", "",      "box",   "brick",
-        "brick", "",      "",      "brick",
-        "brick", "brick", "brick", "brick"
+        "w", "w", "w", "w",
+        "w", " ", "b", "w",
+        "w", "d", " ", "w",
+        "w", "w", "w", "w"
+      ]
+    }
+
+    var level2 = {
+      width: 5,
+      height: 5,
+      index: [
+        "w", "w", "w", "w", "w",
+        "w", " ", " ", " ", "w",
+        "w", " ", "b", " ", "w",
+        "w", " ", " ", " ", "w",
+        "w", "w", "w", "w", "w"
       ]
     }
 
@@ -29,7 +41,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        { displayLevel(level1) }
+        { displayLevel(level2) }
       </div>
     );
   }

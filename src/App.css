@@ -18,14 +18,14 @@ body {
   margin-bottom: -12px;
 }
 
-.brick {
+.w {
   background-image: url("img/brick.png");
 }
 
-.box {
+.b {
   background-image: url("img/box.png");
 }
 
-.diamond {
+.d {
   background-image: url("img/diamond.png");
 }
