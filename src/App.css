@@ -1,24 +1,31 @@
+body {
+  margin: 64px;
+  padding: 0;
+  background-color: #52ffff;
+}
+
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 64px 64px 64px 64px;
+  grid-template-rows: 48px 48px 48px 48px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.block {
+  overflow: visible;
+  width: 96px;
+  height: 64px;
+  margin-right: -24px;
+  margin-bottom: -12px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.brick {
+  background-image: url("img/brick.png");
 }
 
-.App-intro {
-  font-size: large;
+.box {
+  background-image: url("img/box.png");
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.diamond {
+  background-image: url("img/diamond.png");
 }
