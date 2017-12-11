@@ -1,0 +1,16 @@
+.Footer {
+  font-family: 'Press Start 2P', sans-serif;
+  width: calc(100% - 2px);
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 1px 1px;
+}
+
+.level-number {
+  padding-right: 8px;
+  border-right: 5px solid #ff46ff;
+}

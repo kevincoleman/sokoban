@@ -1,0 +1,25 @@
+.Level {
+  display: grid;
+  grid-template-columns: 64px 64px 64px 64px;
+  grid-template-rows: 48px 48px 48px 48px;
+}
+
+.block {
+  overflow: visible;
+  width: 96px;
+  height: 64px;
+  margin-right: -24px;
+  margin-bottom: -12px;
+}
+
+.w {
+  background-image: url("img/brick.png");
+}
+
+.b {
+  background-image: url("img/box.png");
+}
+
+.d {
+  background-image: url("img/diamond.png");
+}
