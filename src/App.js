@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import Level from './Level';
-import Footer from './Footer';
 
 class App extends Component {
   render() {
@@ -10,7 +9,6 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Route path="/level/:number" component={Level} />
-          <Footer />
         </div>
       </BrowserRouter>
     )

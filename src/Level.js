@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
 import './Level.css';
+import Footer from './Footer';
 import maps from './levels/levels.json';
 
 class Level extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      level: this.props.match.params.number,
+      moves: 0,
+      pushes: 0,
+      time: 0
+    }
   }
 
   render() {
@@ -22,6 +28,7 @@ class Level extends Component {
       return level.index.map((type, index) => {
         return <div
           className={"block " + type}
+          key={index}
           style={{gridColumn: getCol(level, index), gridRow: getRow(level, index)}}
         >
         </div>
@@ -30,7 +37,13 @@ class Level extends Component {
 
     return (
       <div className="Level">
-        { displayLevel(maps.levels[this.props.match.params.number - 1]) }
+        { displayLevel(maps.levels[this.state.level - 1]) }
+        <Footer
+          level={this.state.level}
+          moves={this.state.moves}
+          pushes={this.state.pushes}
+          time={this.state.time}
+        />
       </div>
     )
 
