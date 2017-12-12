@@ -7,10 +7,12 @@ import Footer from './Footer';
 class App extends Component {
   render() {
     return (
-      <div class="App">
-        <Level />
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Route path="/level/:number" component={Level} />
+          <Footer />
+        </div>
+      </BrowserRouter>
     )
   }
 }

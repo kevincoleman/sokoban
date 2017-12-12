@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './Level.css';
-
-import level1 from './levels/1.json';
-import level2 from './levels/2.json';
+import maps from './levels/levels.json';
 
 class Level extends Component {
+
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     let getCol = function(level, index) {
@@ -28,7 +30,7 @@ class Level extends Component {
 
     return (
       <div className="Level">
-        { displayLevel(level2) }
+        { displayLevel(maps.levels[this.props.match.params.number - 1]) }
       </div>
     )
 
