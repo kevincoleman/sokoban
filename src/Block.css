@@ -1,0 +1,19 @@
+.block {
+  width: 96px;
+  height: 64px;
+  margin-right: -32px;
+  margin-bottom: -16px;
+  background-repeat: no-repeat;
+}
+
+.brick {
+  background-image: url("/img/brick.png");
+}
+
+.box {
+  background-image: url("/img/box.png");
+}
+
+.diamond {
+  background-image: url("/img/diamond.png");
+}
