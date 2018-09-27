@@ -23,7 +23,7 @@ export default [
         { type: "blank", x: 2, y: 3 },
         { type: "diamond", x: 3, y: 3 },
         { type: "box", x: 4, y: 3 },
-        { type: "man", x: 5, y: 3 },
+        { type: "man-left", x: 5, y: 3 },
         { type: "blank", x: 6, y: 3 },
         { type: "brick", x: 7, y: 3 },
         { type: "brick", x: 1, y: 4 },

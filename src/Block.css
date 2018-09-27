@@ -17,3 +17,16 @@
 .diamond {
   background-image: url("/img/diamond.png");
 }
+
+.man-up,
+.man-down {
+  background-image: url("/img/man-up.png");
+}
+
+.man-left {
+  background-image: url("/img/man-left.png");
+}
+
+.man-right {
+  background-image: url("/img/man-right.png");
+}
