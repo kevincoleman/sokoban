@@ -31,6 +31,7 @@
     "webpack-dev-server": "^3.1.8"
   },
   "dependencies": {
+    "arrow-keys-react": "^1.0.6",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-router": "^4.4.0-alpha.1",

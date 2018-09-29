@@ -10,12 +10,12 @@
   background-image: url("/img/brick.png");
 }
 
-.box {
-  background-image: url("/img/box.png");
-}
-
 .diamond {
   background-image: url("/img/diamond.png");
+}
+
+.box {
+  background-image: url("/img/box.png");
 }
 
 .man-up,
