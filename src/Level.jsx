@@ -161,29 +161,45 @@ class Level extends Component {
   isBlocked(x, y, direction) {
     switch (direction) {
       case "left":
-        return (
-          // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
-          this.isSolid(this.getBlock(x - 1, y)) &&
-          this.isSolid(this.getBlock(x - 2, y))
-        );
+        // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
+        if (this.getBlock(x - 1, y).type == "brick") {
+          return true;
+        } else {
+          return (
+            this.isSolid(this.getBlock(x - 1, y)) &&
+            this.isSolid(this.getBlock(x - 2, y))
+          );
+        }
       case "right":
-        return (
-          // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
-          this.isSolid(this.getBlock(x + 1, y)) &&
-          this.isSolid(this.getBlock(x + 2, y))
-        );
+        // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
+        if (this.getBlock(x + 1, y).type == "brick") {
+          return true;
+        } else {
+          return (
+            this.isSolid(this.getBlock(x + 1, y)) &&
+            this.isSolid(this.getBlock(x + 2, y))
+          );
+        }
       case "up":
-        return (
-          // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
-          this.isSolid(this.getBlock(x, y - 1)) &&
-          this.isSolid(this.getBlock(x, y - 2))
-        );
+        // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
+        if (this.getBlock(x, y - 1).type == "brick") {
+          return true;
+        } else {
+          return (
+            this.isSolid(this.getBlock(x, y - 1)) &&
+            this.isSolid(this.getBlock(x, y - 2))
+          );
+        }
       case "down":
-        return (
-          // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
-          this.isSolid(this.getBlock(x, y + 1)) &&
-          this.isSolid(this.getBlock(x, y + 2))
-        );
+        // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
+        if (this.getBlock(x, y + 1).type == "brick") {
+          return true;
+        } else {
+          return (
+            this.isSolid(this.getBlock(x, y + 1)) &&
+            this.isSolid(this.getBlock(x, y + 2))
+          );
+        }
       default:
         return `${direction} is unblocked, or you’re checking the edge of the map from ${x}, ${y}.`;
     }
