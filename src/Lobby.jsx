@@ -1,26 +1,23 @@
 import React, { Component } from "react";
 import "./Lobby.css";
 import { Link } from "react-router-dom";
+import levels from "./levels.js";
 
 class Lobby extends Component {
   render() {
     return (
-      <nav>
-        <ul>
-          <li>
-            <Link to={`/level/1`}>one</Link>
-          </li>
-          <li>
-            <Link to={`/level/2`}>two</Link>
-          </li>
-          <li>
-            <Link to={`/level/3`}>three</Link>
-          </li>
-          <li>
-            <Link to={`/level/4`}>four</Link>
-          </li>
-        </ul>
-      </nav>
+      <div className="lobby">
+        <h1>Sokoban Classic</h1>
+        <nav>
+          <ul>
+            {levels.map(level => (
+              <li key={level.number}>
+                <Link to={`/level/${level.number}`}>Level {level.number}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     );
   }
 }

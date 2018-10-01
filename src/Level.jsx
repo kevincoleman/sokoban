@@ -122,6 +122,7 @@ class Level extends Component {
       console.log("cock blocked!");
     }
 
+    // reset any diamonds that the man or blocks covered
     newLevel.chart.forEach(block => {
       this.state.diamonds.forEach(diamond => {
         if (
