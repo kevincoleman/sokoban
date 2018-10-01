@@ -176,41 +176,41 @@ class Level extends Component {
   isBlocked(x, y, direction) {
     switch (direction) {
       case "left":
-        // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
         if (this.getBlock(x - 1, y).type == "brick") {
           return true;
         } else {
           return (
+            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
             this.isSolid(this.getBlock(x - 1, y)) &&
             this.isSolid(this.getBlock(x - 2, y))
           );
         }
       case "right":
-        // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
         if (this.getBlock(x + 1, y).type.indexOf("brick") >= 0) {
           return true;
         } else {
           return (
+            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
             this.isSolid(this.getBlock(x + 1, y)) &&
             this.isSolid(this.getBlock(x + 2, y))
           );
         }
       case "up":
-        // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
         if (this.getBlock(x, y - 1).type.indexOf("brick") >= 0) {
           return true;
         } else {
           return (
+            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
             this.isSolid(this.getBlock(x, y - 1)) &&
             this.isSolid(this.getBlock(x, y - 2))
           );
         }
       case "down":
-        // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
         if (this.getBlock(x, y + 1).type.indexOf("brick") >= 0) {
           return true;
         } else {
           return (
+            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
             this.isSolid(this.getBlock(x, y + 1)) &&
             this.isSolid(this.getBlock(x, y + 2))
           );
@@ -221,7 +221,28 @@ class Level extends Component {
   }
 
   componentDidMount() {
+    // select the map on load so it’s keyboard-ready
     this.gameMap.focus();
+
+    // time formatting
+    let pad = (num, size) => {
+      let s = "00" + num;
+      return s.substr(s.length - size);
+    };
+
+    // update the clock
+    let totalSeconds = 0;
+    let countTimer = () => {
+      ++totalSeconds;
+      let hour = Math.floor(totalSeconds / 3600);
+      let minute = Math.floor((totalSeconds - hour * 3600) / 60);
+      let seconds = totalSeconds - (hour * 3600 + minute * 60);
+
+      this.setState({
+        time: `${pad(hour, 2)}:${pad(minute, 2)}:${pad(seconds, 2)}`
+      });
+    };
+    setInterval(countTimer, 1000);
   }
 
   render() {
