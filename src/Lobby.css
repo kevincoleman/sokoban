@@ -3,6 +3,7 @@
 .lobby {
   font-family: "Press Start 2P";
   min-width: 70vw;
+  line-height: 2em;
 }
 
 h1 {
@@ -12,10 +13,15 @@ h1 {
 
 ul {
   list-style: none;
+  padding-left: 5vw;
   margin: 0;
 }
 
 a {
   color: #000000;
   text-decoration: none;
+}
+
+a:hover {
+  background-color: white;
 }

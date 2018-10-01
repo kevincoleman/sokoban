@@ -1,9 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
 .Level {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+h2 {
+  font-family: "Press Start 2P";
+  width: 100%;
+  text-align: center;
+  background-color: none;
 }
 
 .chart {
