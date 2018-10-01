@@ -205,6 +205,10 @@ class Level extends Component {
     }
   }
 
+  componentDidMount() {
+    this.gameMap.focus();
+  }
+
   render() {
     // add ids for indexing
     this.state.level.chart.forEach((block, index) => {
@@ -212,7 +216,13 @@ class Level extends Component {
     });
 
     return (
-      <div className="Level" {...ArrowKeysReact.events} tabIndex="1">
+      <div
+        className="Level"
+        {...ArrowKeysReact.events}
+        tabIndex="1"
+        autoFocus={true}
+        ref={c => (this.gameMap = c)}
+      >
         <div
           className="chart"
           style={{
