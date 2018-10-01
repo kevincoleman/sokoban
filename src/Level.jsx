@@ -19,8 +19,6 @@ class Level extends Component {
         .chart.filter(block => block.type.indexOf("diamond") >= 0)
     };
 
-    console.log(this.state.diamonds);
-
     ArrowKeysReact.config({
       left: () => {
         this.move("left");
