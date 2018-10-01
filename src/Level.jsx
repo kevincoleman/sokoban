@@ -154,7 +154,9 @@ class Level extends Component {
 
   isSolid(block) {
     return (
-      block.type === "brick" || block.type === "box" || block.type === "edge"
+      block.type.indexOf("brick") >= 0 ||
+      block.type.indexOf("box") >= 0 ||
+      block.type.indexOf("edge") >= 0
     );
   }
 
@@ -172,7 +174,7 @@ class Level extends Component {
         }
       case "right":
         // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
-        if (this.getBlock(x + 1, y).type == "brick") {
+        if (this.getBlock(x + 1, y).type.indexOf("brick") >= 0) {
           return true;
         } else {
           return (
@@ -182,7 +184,7 @@ class Level extends Component {
         }
       case "up":
         // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
-        if (this.getBlock(x, y - 1).type == "brick") {
+        if (this.getBlock(x, y - 1).type.indexOf("brick") >= 0) {
           return true;
         } else {
           return (
@@ -192,7 +194,7 @@ class Level extends Component {
         }
       case "down":
         // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
-        if (this.getBlock(x, y + 1).type == "brick") {
+        if (this.getBlock(x, y + 1).type.indexOf("brick") >= 0) {
           return true;
         } else {
           return (
