@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Level.css";
 import Footer from "./Footer";
 import Block from "./Block";
@@ -119,7 +120,7 @@ class Level extends Component {
 
       this.state.moves++;
     } else {
-      console.log("cock blocked!");
+      // move failed
     }
 
     // reset any diamonds that the man or blocks covered
@@ -135,6 +136,18 @@ class Level extends Component {
     });
 
     this.setState({ level: newLevel });
+    if (this.checkWin()) {
+      console.log(`You beat level ${this.state.level.number}!`);
+    }
+  }
+
+  checkWin() {
+    return (
+      this.state.level.chart.filter(block => block.type == "box diamond")
+        .length +
+        1 >=
+      this.state.diamonds.length
+    );
   }
 
   getBlock(x, y) {
@@ -235,6 +248,9 @@ class Level extends Component {
             <Block type={block.type} x={block.x} y={block.y} key={block.id} />
           ))}
         </div>
+        <h2>
+          <Link to={`/lobby`}>&lt;-- Back to Lobby</Link>
+        </h2>
         <Footer
           level={this.props.level}
           moves={this.state.moves}
