@@ -12,7 +12,7 @@
     "dev": "webpack-dev-server --env dev --progress --profile --colors",
     "build:dev": "webpack --env dev --progress --profile --colors",
     "build:prod": "webpack --env prod --progress --profile --colors",
-    "heroku-postbuild": "webpack - p"
+    "heroku-postbuild": "webpack --env prod -p"
   },
   "repository": {
     "type": "git",
