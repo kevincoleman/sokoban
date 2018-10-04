@@ -9,7 +9,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development"
+    "dev": "webpack-dev-server --env dev --progress --profile --colors",
+    "build:dev": "webpack --env dev --progress --profile --colors",
+    "build:prod": "webpack --env prod --progress --profile --colors",
+    "heroku-postbuild": "webpack - p"
   },
   "repository": {
     "type": "git",
