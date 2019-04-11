@@ -36,6 +36,95 @@ class Level extends Component {
     });
   }
 
+  checkWin() {
+    return (
+      this.state.level.chart.filter(block => block.type == "box diamond")
+        .length >= this.state.diamonds.length
+    );
+  }
+
+  getBlock(x, y) {
+    if (
+      x > 0 &&
+      x <= this.state.level.width &&
+      y > 0 &&
+      y < this.state.level.height
+    ) {
+      return this.state.level.chart.filter(
+        block => block.x == x && block.y == y
+      )[0];
+    } else {
+      return { type: "edge", x: x, y: y };
+    }
+  }
+
+  isSolid(block) {
+    return (
+      block.type.indexOf("brick") >= 0 ||
+      block.type.indexOf("box") >= 0 ||
+      block.type.indexOf("edge") >= 0
+    );
+  }
+
+  // isBlocked(block, direction, distance) {
+  // if
+  // }
+  isBlocked(x, y, direction) {
+    switch (direction) {
+      case "left":
+        if (this.getBlock(x - 1, y).type == "brick") {
+          return true;
+        } else {
+          return (
+            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
+            this.isSolid(this.getBlock(x - 1, y)) &&
+            this.isSolid(this.getBlock(x - 2, y))
+          );
+        }
+      case "right":
+        if (this.getBlock(x + 1, y).type.indexOf("brick") >= 0) {
+          return true;
+        } else {
+          return (
+            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
+            this.isSolid(this.getBlock(x + 1, y)) &&
+            this.isSolid(this.getBlock(x + 2, y))
+          );
+        }
+      case "up":
+        if (this.getBlock(x, y - 1).type.indexOf("brick") >= 0) {
+          return true;
+        } else {
+          return (
+            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
+            this.isSolid(this.getBlock(x, y - 1)) &&
+            this.isSolid(this.getBlock(x, y - 2))
+          );
+        }
+      case "down":
+        if (this.getBlock(x, y + 1).type.indexOf("brick") >= 0) {
+          return true;
+        } else {
+          return (
+            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
+            this.isSolid(this.getBlock(x, y + 1)) &&
+            this.isSolid(this.getBlock(x, y + 2))
+          );
+        }
+      default:
+        return `${direction} is unblocked, or you’re checking the edge of the map from ${x}, ${y}.`;
+    }
+  }
+
+  // move(block, direction) {
+  // turn man if man
+  // check if blocked
+  // if man, check 2
+  // if block, check 1
+  // generic move mechanics
+
+  // }
+
   move(direction) {
     let newLevel = this.state.level;
 
@@ -102,7 +191,7 @@ class Level extends Component {
                 newBoxBlock = this.getBlock(newManBlock.x, newManBlock.y + 1);
                 break;
               default:
-                console.log("no direction to move box");
+                console.error("no direction to move box");
             }
             newBoxBlock.type = `box${
               newBoxBlock.type == "diamond" ? " diamond" : ""
@@ -136,87 +225,10 @@ class Level extends Component {
     });
 
     this.setState({ level: newLevel });
+
+    // after every move, check if we’ve won!
     if (this.checkWin()) {
       console.log(`You beat level ${this.state.level.number}!`);
-    }
-  }
-
-  checkWin() {
-    return (
-      this.state.level.chart.filter(block => block.type == "box diamond")
-        .length +
-        1 >=
-      this.state.diamonds.length
-    );
-  }
-
-  getBlock(x, y) {
-    if (
-      x > 0 &&
-      x <= this.state.level.width &&
-      y > 0 &&
-      y < this.state.level.height
-    ) {
-      return this.state.level.chart.filter(
-        block => block.x == x && block.y == y
-      )[0];
-    } else {
-      return { type: "edge", x: x, y: y };
-    }
-  }
-
-  isSolid(block) {
-    return (
-      block.type.indexOf("brick") >= 0 ||
-      block.type.indexOf("box") >= 0 ||
-      block.type.indexOf("edge") >= 0
-    );
-  }
-
-  isBlocked(x, y, direction) {
-    switch (direction) {
-      case "left":
-        if (this.getBlock(x - 1, y).type == "brick") {
-          return true;
-        } else {
-          return (
-            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
-            this.isSolid(this.getBlock(x - 1, y)) &&
-            this.isSolid(this.getBlock(x - 2, y))
-          );
-        }
-      case "right":
-        if (this.getBlock(x + 1, y).type.indexOf("brick") >= 0) {
-          return true;
-        } else {
-          return (
-            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
-            this.isSolid(this.getBlock(x + 1, y)) &&
-            this.isSolid(this.getBlock(x + 2, y))
-          );
-        }
-      case "up":
-        if (this.getBlock(x, y - 1).type.indexOf("brick") >= 0) {
-          return true;
-        } else {
-          return (
-            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
-            this.isSolid(this.getBlock(x, y - 1)) &&
-            this.isSolid(this.getBlock(x, y - 2))
-          );
-        }
-      case "down":
-        if (this.getBlock(x, y + 1).type.indexOf("brick") >= 0) {
-          return true;
-        } else {
-          return (
-            // note: because of order of operations, if the closer block is not solid, this won’t check the farther one
-            this.isSolid(this.getBlock(x, y + 1)) &&
-            this.isSolid(this.getBlock(x, y + 2))
-          );
-        }
-      default:
-        return `${direction} is unblocked, or you’re checking the edge of the map from ${x}, ${y}.`;
     }
   }
 
