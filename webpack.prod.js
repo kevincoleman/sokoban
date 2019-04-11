@@ -2,10 +2,10 @@ const path = require("path");
 const webpack = require("webpack");
 
 const APP_DIR = path.resolve(__dirname, "./src");
-const BUILD_DIR = path.resolve(__dirname, "./dist");
+const BUILD_DIR = path.resolve(__dirname, "./public");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: APP_DIR + "/index.js",
   output: {
     path: BUILD_DIR,
@@ -26,13 +26,5 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       }
     ]
-  },
-  devServer: {
-    contentBase: path.join(__dirname, "public/"),
-    port: 3000,
-    publicPath: "http://localhost:3000/dist/",
-    historyApiFallback: true,
-    hotOnly: true
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  }
 };

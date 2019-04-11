@@ -12,6 +12,7 @@
     "dev": "webpack-dev-server --env dev --progress --profile --colors",
     "build:dev": "webpack --env dev --progress --profile --colors",
     "build:prod": "webpack --env prod --progress --profile --colors",
+    "start": "node server.js",
     "heroku-postbuild": "webpack --env prod -p"
   },
   "repository": {
@@ -39,6 +40,7 @@
   },
   "dependencies": {
     "arrow-keys-react": "^1.0.6",
+    "express": "^4.16.4",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-router": "^4.4.0-alpha.1",
